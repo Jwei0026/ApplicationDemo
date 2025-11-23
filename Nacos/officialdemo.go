@@ -72,6 +72,7 @@ func main() {
 
 	// 初始读取配置
 	read(configClient)
+	rollbackConfig()
 
 	// 在独立的goroutine中启动配置监听，不阻塞主程序运行
 	go ListenConfig(configClient)
