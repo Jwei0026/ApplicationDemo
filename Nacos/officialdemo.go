@@ -196,3 +196,34 @@ func ListenConfig(configClient config_client.IConfigClient) {
 	// 保持goroutine运行
 	select {}
 }
+
+// 版本管理demo
+func rollbackConfig() {
+	//进行版本管理可以进行如下操作：
+	//1.通过给dataId添加版本号来实现配置的版本管理
+	//2.通过使用searchConfig函数来搜索配置版本，找到需要回滚的版本号
+	//3.调用publishConfig函数来发布回滚后的配置
+
+	//searcgConfig使用实例如下：
+	// searchResult, err := client.SearchConfig(vo.SearchConfigParam{
+	// 	Search:   "blur",    // 搜索关键字
+	// 	DataId:   "",        // 不指定数据 ID，表示搜索所有配置
+	// 	Group:    "",        // 不指定配置分组，表示搜索所有分组
+	// 	PageNo:   1,         // 页码，默认从第 1 页开始
+	// 	PageSize: 10,        // 每页返回 10 个配置项
+	// })
+	// if err != nil {
+	// 	return fmt.Errorf("failed to search config: %v", err)
+	// }
+	// 输出搜索结果
+	// fmt.Println("Search result:")
+	// fmt.Printf("Total count: %d\n", searchResult.Count)
+	// for _, config := range searchResult.Configs {
+	// 	fmt.Printf("DataId: %s, Group: %s, Content: %s\n", config.DataId, config.Group, config.Content)
+	// }
+	//返回的结果：
+	// Search result:
+	// Total count: 2
+	// DataId: app-config, Group: DEFAULT_GROUP, Content: blur effect
+	// DataId: image-config, Group: DEFAULT_GROUP, Content: background blur
+}
